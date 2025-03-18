@@ -506,18 +506,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3356959713392420352, guid: 56c8da53f57a43a488f2b6422ac09948, type: 3}
-      propertyPath: m_Name
-      value: Bottom
-      objectReference: {fileID: 0}
-    - target: {fileID: 4108786415962574252, guid: 56c8da53f57a43a488f2b6422ac09948, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5850104392684743071, guid: 56c8da53f57a43a488f2b6422ac09948, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 8693905687978708186, guid: 56c8da53f57a43a488f2b6422ac09948, type: 3}
       propertyPath: m_Name
       value: WoodChopper
