@@ -8,10 +8,14 @@ public class Knight : MonoBehaviour
     public float speed = 4f;
     Animator animator;
     SpriteRenderer sr;
+    AudioSource auSo;
     public bool canRun = true;
+
+    public List<AudioClip> steps;
 
     void Start()
     {
+        auSo = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
     }
@@ -37,6 +41,12 @@ public class Knight : MonoBehaviour
 
             transform.position += Vector3.right * dir * speed * Time.deltaTime;
         }
+    }
+
+    public void step()
+    {
+        auSo.clip = steps[Random.Range(0,steps.Count)];
+        auSo.Play();
     }
 
     public void AttackHasFinished()
