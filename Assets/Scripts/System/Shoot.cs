@@ -9,6 +9,10 @@ public class Shoot : MonoBehaviour
 
     void Update()
     {
+        if(GameObject.Find("Enemy(Clone)") != null)
+        {
+            GameObject.Find("Enemy(Clone)").GetComponent<SpriteRenderer>().color = Color.red;
+        }
         if (Input.GetKey(KeyCode.Space) && timer < 0.1f)
         {
             timer = 0.4f;

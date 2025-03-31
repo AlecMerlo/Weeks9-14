@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
 {
     public int speed;
     public GameObject player;
+    public GameObject enemySpawner;
 
     // Start is called before the first frame update
     void Start()
@@ -23,8 +24,10 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        else if (Vector3.Distance(transform.position, GameObject.Find("Enemy(Clone)").transform.position) < 0.5f)
+        else if (GameObject.Find("Enemy(Clone)") != null && Vector3.Distance(transform.position, GameObject.Find("Enemy(Clone)").transform.position) < 0.5f)
         {
+            Destroy(GameObject.Find("Enemy(Clone)"));
+            enemySpawner.GetComponent<SpawnEnemy>().enemiesLeft -= 1;
             Destroy(gameObject);
         }
     }
