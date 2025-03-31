@@ -9,11 +9,6 @@ public class Enemy : MonoBehaviour
     public float speed;
     public GameObject player;
 
-    void Start()
-    {
-        
-    }
-
     void FixedUpdate()
     {
         // difficulty goes up if enemy not killed

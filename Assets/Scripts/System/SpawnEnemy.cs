@@ -8,11 +8,6 @@ public class SpawnEnemy : MonoBehaviour
     public int enemiesLeft;
     public GameObject enemy;
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         if(enemiesLeft == 0)

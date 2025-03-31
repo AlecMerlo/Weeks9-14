@@ -9,14 +9,12 @@ public class Bullet : MonoBehaviour
     public GameObject player;
     public GameObject enemySpawner;
 
-    // Start is called before the first frame update
     void Start()
     {
         transform.position = player.transform.position;
         transform.rotation = player.transform.rotation;
     }
 
-    // Update is called once per frame
     void Update()
     {
         transform.position += transform.right * speed * Time.deltaTime;

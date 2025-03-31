@@ -5,7 +5,7 @@ using UnityEngine;
 public class Shoot : MonoBehaviour
 {
     public GameObject bullet;
-    float timer;
+    private float timer;
 
     void Update()
     {
