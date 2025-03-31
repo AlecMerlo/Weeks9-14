@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
         transform.rotation = player.transform.rotation;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         // move forwards
         transform.position += transform.right * speed * Time.deltaTime;
@@ -27,10 +27,9 @@ public class Bullet : MonoBehaviour
         }
         // destroy if hit enemy
         // also destroy enemy
-        else if (GameObject.Find("Enemy(Clone)") != null && Vector3.Distance(transform.position, GameObject.Find("Enemy(Clone)").transform.position) < 0.5f)
+        else if (Vector3.Distance(transform.position, GameObject.Find("Enemy(Clone)").transform.position) < 0.5f)
         {
-            Destroy(GameObject.Find("Enemy(Clone)"));
-            enemySpawner.GetComponent<SpawnEnemy>().enemiesLeft -= 1;
+            GameObject.Find("Enemy(Clone)").GetComponent<Enemy>().kill();
             Destroy(gameObject);
         }
     }

@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SpawnEnemy : MonoBehaviour
 {
-    private int enemyAmount = 1;
+    public int enemyAmount = 1;
     public int enemiesLeft;
     public GameObject enemy;
+    public TextMeshPro amountText;
 
     void Update()
     {
@@ -42,6 +44,7 @@ public class SpawnEnemy : MonoBehaviour
             }
             enemy.SetActive(false);
             enemyAmount += 1;
+            amountText.text = enemiesLeft.ToString();
         }
     }
 }

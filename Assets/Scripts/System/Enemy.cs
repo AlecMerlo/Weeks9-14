@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -7,7 +8,10 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public float speed;
+    bool killed;
     public GameObject player;
+    public GameObject enemySpawner;
+    public TextMeshPro amountText;
 
     void FixedUpdate()
     {
@@ -15,14 +19,24 @@ public class Enemy : MonoBehaviour
         speed += Time.deltaTime * 0.05f;
         // move towards player
         transform.position += -(transform.position - player.transform.position).normalized * Time.deltaTime * speed;
+
+        // if player touching, lower enemy amount by 1 and destroy enemy
+        if (Vector3.Distance(transform.position, player.transform.position) < 0.9f)
+        {
+            enemySpawner.GetComponent<SpawnEnemy>().enemyAmount -= 1;
+            enemySpawner.GetComponent<SpawnEnemy>().enemiesLeft -= 1;
+            amountText.text = enemySpawner.GetComponent<SpawnEnemy>().enemyAmount.ToString();
+            Destroy(gameObject);
+        }
     }
 
-    private void Update()
+    public void kill()
     {
-        // if player touching
-        if(Vector3.Distance(transform.position, player.transform.position) < 0.9f)
+        if(GameObject.Find("Enemy(Clone)") == this.gameObject && killed == false)
         {
-            Debug.Log("womp womp");
+            killed = true;
+            enemySpawner.GetComponent<SpawnEnemy>().enemiesLeft -= 1;
+            Destroy(gameObject);
         }
     }
 }
