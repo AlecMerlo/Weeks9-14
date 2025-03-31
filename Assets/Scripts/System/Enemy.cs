@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     void FixedUpdate()
     {
         // difficulty goes up if enemy not killed
-        speed += Time.deltaTime * 0.05f;
+        speed += Time.deltaTime * (0.02f * enemySpawner.GetComponent<SpawnEnemy>().enemyAmount);
         // move towards player
         transform.position += -(transform.position - player.transform.position).normalized * Time.deltaTime * speed;
 

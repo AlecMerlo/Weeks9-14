@@ -6,12 +6,14 @@ public class Shoot : MonoBehaviour
 {
     public GameObject bullet;
     public GameObject laserObj;
+    public GameObject player;
     private float timer;
-    public float charge;
-    public float shootTime;
+    private float charge;
+    private float shootTime;
+    private bool usingPistol = true;
     private IEnumerator chargeUp;
     private IEnumerator laserShot;
-
+    
 
     void Update()
     {
@@ -20,9 +22,30 @@ public class Shoot : MonoBehaviour
         {
             GameObject.Find("Enemy(Clone)").GetComponent<SpriteRenderer>().color = Color.red;
         }
+
+        // switch weapon
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if (usingPistol)
+            {
+                player.transform.GetChild(0).gameObject.SetActive(false);
+                player.transform.GetChild(1).gameObject.SetActive(true);
+                usingPistol = false;
+            }
+            else
+            {
+                player.transform.GetChild(0).gameObject.SetActive(true);
+                player.transform.GetChild(1).gameObject.SetActive(false);
+                usingPistol = true;
+            }
+        }
+
         // shoot
-        //pistol();
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (usingPistol)
+        {
+            pistol();
+        }
+        else if (Input.GetKeyDown(KeyCode.Space))
         {
             chargeUp = ChargeUp();
             StartCoroutine(chargeUp);
@@ -46,10 +69,10 @@ public class Shoot : MonoBehaviour
 
     IEnumerator ChargeUp()
     {
-        while (charge < 5 && Input.GetKey(KeyCode.Space))
+        while (charge < 1 && Input.GetKey(KeyCode.Space))
         {
-            laserObj.transform.GetChild(0).transform.localPosition += Vector3.up * Time.deltaTime * 0.1f;
-            laserObj.transform.GetChild(1).transform.localPosition -= Vector3.up * Time.deltaTime * 0.1f;
+            laserObj.transform.GetChild(0).transform.localPosition += Vector3.up * Time.deltaTime * 0.4f;
+            laserObj.transform.GetChild(1).transform.localPosition -= Vector3.up * Time.deltaTime * 0.4f;
             charge += Time.deltaTime;
             yield return null;
         }
