@@ -230,7 +230,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &264839045
 Transform:
   m_ObjectHideFlags: 0
@@ -733,7 +733,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1730469028
 Transform:
   m_ObjectHideFlags: 0
@@ -1020,8 +1020,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 2142493734}
   laserObj: {fileID: 1730469027}
-  charge: 0
-  shootTime: 0
+  player: {fileID: 1145234565}
 --- !u!1 &2142493734
 GameObject:
   m_ObjectHideFlags: 0
