@@ -356,7 +356,7 @@ GameObject:
   - component: {fileID: 1145234567}
   - component: {fileID: 1145234566}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -462,7 +462,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1364879321
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -542,7 +542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3651fb561b3b5440ac73e00840d8161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 1.5
   player: {fileID: 1145234565}
 --- !u!1 &2109205510
 GameObject:
@@ -553,6 +553,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2109205511}
+  - component: {fileID: 2109205512}
   m_Layer: 0
   m_Name: BulletSpawner
   m_TagString: Untagged
@@ -575,6 +576,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2109205512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2109205510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 119fbc6f264accc4c996990913c7995b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 2142493734}
 --- !u!1 &2142493734
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,7 +606,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &2142493735
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -672,6 +686,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea83574a8eb278f4ab83f5db68cf9f73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 20
+  player: {fileID: 1145234565}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

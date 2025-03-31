@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class Shoot : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject bullet;
+    float timer;
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKey(KeyCode.Space) && timer < 0.1f)
+        {
+            timer = 0.4f;
+            bullet.SetActive(true);
+            Instantiate(bullet);
+            bullet.SetActive(false);
+        }
+        timer -= Time.deltaTime;
+        timer = Mathf.Clamp(timer, 0, Mathf.Infinity);
     }
 }

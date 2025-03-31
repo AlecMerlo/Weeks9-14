@@ -22,6 +22,7 @@ public class Movement : MonoBehaviour
     {
         movementDir = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0).normalized;
         transform.position += movementDir * movSpeed * Time.deltaTime;
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x,-6,6), Mathf.Clamp(transform.position.y,-4.5f,4.5f), 0);
 
         transform.Rotate(0, 0, -rotSpeed * Input.GetAxisRaw("RotateHorizontal") * Time.deltaTime);
     }
