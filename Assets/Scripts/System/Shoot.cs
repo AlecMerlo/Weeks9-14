@@ -10,7 +10,7 @@ public class Shoot : MonoBehaviour
     private float timer;
     private float charge;
     private float shootTime;
-    private bool usingPistol = true;
+    public bool usingPistol = true;
     private IEnumerator chargeUp;
     private IEnumerator laserShot;
     
@@ -69,7 +69,7 @@ public class Shoot : MonoBehaviour
 
     IEnumerator ChargeUp()
     {
-        while (charge < 1 && Input.GetKey(KeyCode.Space))
+        while (charge < 1.5f && Input.GetKey(KeyCode.Space))
         {
             laserObj.transform.GetChild(0).transform.localPosition += Vector3.up * Time.deltaTime * 0.4f;
             laserObj.transform.GetChild(1).transform.localPosition -= Vector3.up * Time.deltaTime * 0.4f;
@@ -88,7 +88,7 @@ public class Shoot : MonoBehaviour
 
     IEnumerator LaserShoot()
     {
-        while (shootTime < 0.5f)
+        while (shootTime < 0.4f)
         {
             bullet.SetActive(true);
             Instantiate(bullet);

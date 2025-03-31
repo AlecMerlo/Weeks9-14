@@ -8,12 +8,17 @@ public class Bullet : MonoBehaviour
     public int speed;
     public GameObject player;
     public GameObject enemySpawner;
+    public GameObject bulletSpawner;
 
     void Start()
     {
         // go to player
         transform.position = player.transform.position;
         transform.rotation = player.transform.rotation;
+        if (bulletSpawner.GetComponent<Shoot>().usingPistol)
+        {
+            transform.Rotate(Vector3.forward * Random.Range(-10f,10f));
+        }
     }
 
     void FixedUpdate()

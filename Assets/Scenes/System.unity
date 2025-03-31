@@ -1021,6 +1021,7 @@ MonoBehaviour:
   bullet: {fileID: 2142493734}
   laserObj: {fileID: 1730469027}
   player: {fileID: 1145234565}
+  usingPistol: 1
 --- !u!1 &2142493734
 GameObject:
   m_ObjectHideFlags: 0
@@ -1121,6 +1122,7 @@ MonoBehaviour:
   speed: 20
   player: {fileID: 1145234565}
   enemySpawner: {fileID: 1107110837}
+  bulletSpawner: {fileID: 2109205510}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
