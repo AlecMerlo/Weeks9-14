@@ -13,11 +13,13 @@ public class Enemy : MonoBehaviour
     {
         // difficulty goes up if enemy not killed
         speed += Time.deltaTime * 0.05f;
+        // move towards player
         transform.position += -(transform.position - player.transform.position).normalized * Time.deltaTime * speed;
     }
 
     private void Update()
     {
+        // if player touching
         if(Vector3.Distance(transform.position, player.transform.position) < 0.9f)
         {
             Debug.Log("womp womp");

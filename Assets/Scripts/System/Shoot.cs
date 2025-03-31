@@ -9,10 +9,12 @@ public class Shoot : MonoBehaviour
 
     void Update()
     {
+        // gets the shootable enemy and makes em red
         if(GameObject.Find("Enemy(Clone)") != null)
         {
             GameObject.Find("Enemy(Clone)").GetComponent<SpriteRenderer>().color = Color.red;
         }
+        // shoot
         if (Input.GetKey(KeyCode.Space) && timer < 0.1f)
         {
             timer = 0.4f;
@@ -20,6 +22,7 @@ public class Shoot : MonoBehaviour
             Instantiate(bullet);
             bullet.SetActive(false);
         }
+        // time between firing
         timer -= Time.deltaTime;
         timer = Mathf.Clamp(timer, 0, Mathf.Infinity);
     }
