@@ -37,7 +37,7 @@ public class Shoot : MonoBehaviour
                 player.transform.GetChild(0).gameObject.SetActive(true);
                 player.transform.GetChild(1).gameObject.SetActive(false);
                 usingPistol = true;
-                //StopAllCoroutines();
+                StopAllCoroutines();
             }
         }
 
