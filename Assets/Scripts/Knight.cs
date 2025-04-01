@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,8 +11,11 @@ public class Knight : MonoBehaviour
     SpriteRenderer sr;
     AudioSource auSo;
     public bool canRun = true;
+    private float shakeTimer;
+    public CinemachineVirtualCamera playerCam;
 
     public List<AudioClip> steps;
+
 
     void Start()
     {
@@ -41,12 +45,24 @@ public class Knight : MonoBehaviour
 
             transform.position += Vector3.right * dir * speed * Time.deltaTime;
         }
+
+        if(shakeTimer > 0)
+        {
+            playerCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 4;
+        }
+        else
+        {
+            playerCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0;
+        }
+        shakeTimer -= Time.deltaTime;
+        shakeTimer = Mathf.Clamp(shakeTimer, 0, Mathf.Infinity);
     }
 
     public void step()
     {
         auSo.clip = steps[Random.Range(0,steps.Count)];
         auSo.Play();
+        shakeTimer = 0.2f;
     }
 
     public void AttackHasFinished()
