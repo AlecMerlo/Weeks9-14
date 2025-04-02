@@ -4,6 +4,7 @@ using TMPro;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour
 {
@@ -11,7 +12,15 @@ public class Enemy : MonoBehaviour
     bool killed;
     public GameObject player;
     public GameObject enemySpawner;
+    public Shoot shoot;
     public TextMeshPro amountText;
+    UnityEvent laserBuff;
+
+    void Start()
+    {
+        laserBuff = new UnityEvent();
+        laserBuff.AddListener(shoot.MakeLaserStronk);
+    }
 
     void FixedUpdate()
     {
@@ -36,6 +45,7 @@ public class Enemy : MonoBehaviour
         {
             killed = true;
             enemySpawner.GetComponent<SpawnEnemy>().enemiesLeft -= 1;
+            laserBuff.Invoke();
             Destroy(gameObject);
         }
     }

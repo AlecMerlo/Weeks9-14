@@ -7,6 +7,7 @@ public class Shoot : MonoBehaviour
     public GameObject bullet;
     public GameObject laserObj;
     public GameObject player;
+    public float laserLength;
     private float timer;
     private float charge;
     private float shootTime;
@@ -17,6 +18,9 @@ public class Shoot : MonoBehaviour
 
     void Update()
     {
+        laserLength -= 0.02f * Time.deltaTime;
+        laserLength = Mathf.Clamp(laserLength, 0.05f, 1f);
+
         // gets the shootable enemy and makes em red
         if(GameObject.Find("Enemy(Clone)") != null)
         {
@@ -89,7 +93,7 @@ public class Shoot : MonoBehaviour
 
     IEnumerator LaserShoot()
     {
-        while (shootTime < 0.4f)
+        while (shootTime < 0.05f + laserLength)
         {
             bullet.SetActive(true);
             Instantiate(bullet);
@@ -98,5 +102,10 @@ public class Shoot : MonoBehaviour
             yield return null;
         }
         shootTime = 0;
+    }
+
+    public void MakeLaserStronk()
+    {
+        laserLength += 0.05f;
     }
 }
