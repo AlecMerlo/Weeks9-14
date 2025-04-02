@@ -18,8 +18,11 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        laserBuff = new UnityEvent();
-        laserBuff.AddListener(shoot.MakeLaserStronk);
+        if (laserBuff == null)
+        {
+            laserBuff = new UnityEvent();
+            laserBuff.AddListener(shoot.MakeLaserStronk);
+        }
     }
 
     void FixedUpdate()
