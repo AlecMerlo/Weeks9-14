@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SpawnEnemy : MonoBehaviour
 {
@@ -9,6 +10,17 @@ public class SpawnEnemy : MonoBehaviour
     public int enemiesLeft;
     public GameObject enemy;
     public TextMeshPro amountText;
+    public Shoot shoot;
+    UnityEvent laserBuff;
+
+    void Start()
+    {
+        if (laserBuff == null)
+        {
+            laserBuff = new UnityEvent();
+            laserBuff.AddListener(shoot.MakeLaserStronk);
+        }
+    }
 
     void Update()
     {
@@ -42,6 +54,7 @@ public class SpawnEnemy : MonoBehaviour
                 }
                 enemiesLeft += 1;
             }
+            laserBuff.Invoke();
             enemy.SetActive(false);
             enemyAmount += 1;
             amountText.text = enemiesLeft.ToString();

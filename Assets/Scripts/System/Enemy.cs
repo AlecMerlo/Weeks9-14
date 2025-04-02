@@ -38,6 +38,7 @@ public class Enemy : MonoBehaviour
             enemySpawner.GetComponent<SpawnEnemy>().enemyAmount -= 1;
             enemySpawner.GetComponent<SpawnEnemy>().enemiesLeft -= 1;
             amountText.text = enemySpawner.GetComponent<SpawnEnemy>().enemyAmount.ToString();
+            laserBuff.Invoke();
             Destroy(gameObject);
         }
     }
@@ -48,7 +49,6 @@ public class Enemy : MonoBehaviour
         {
             killed = true;
             enemySpawner.GetComponent<SpawnEnemy>().enemiesLeft -= 1;
-            laserBuff.Invoke();
             Destroy(gameObject);
         }
     }

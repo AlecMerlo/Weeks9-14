@@ -514,6 +514,7 @@ MonoBehaviour:
   enemiesLeft: 0
   enemy: {fileID: 1364879320}
   amountText: {fileID: 2025225473}
+  shoot: {fileID: 2109205512}
 --- !u!1 &1145234565
 GameObject:
   m_ObjectHideFlags: 0
@@ -1022,6 +1023,7 @@ MonoBehaviour:
   bullet: {fileID: 2142493734}
   laserObj: {fileID: 1730469027}
   player: {fileID: 1145234565}
+  t: {fileID: 2025225473}
   laserLength: 0
   usingPistol: 1
 --- !u!1 &2142493734

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Shoot : MonoBehaviour
@@ -7,6 +8,8 @@ public class Shoot : MonoBehaviour
     public GameObject bullet;
     public GameObject laserObj;
     public GameObject player;
+    public TextMeshPro t;
+    private Vector3 temp;
     public float laserLength;
     private float timer;
     private float charge;
@@ -21,8 +24,15 @@ public class Shoot : MonoBehaviour
         laserLength -= 0.02f * Time.deltaTime;
         laserLength = Mathf.Clamp(laserLength, 0.05f, 1f);
 
+        t.transform.localScale -= Vector3.one * Time.deltaTime;
+        temp = new Vector3(Mathf.Clamp(t.transform.localScale.x, 1.4f, 2f), Mathf.Clamp(t.transform.localScale.y, 1.4f, 2f), Mathf.Clamp(t.transform.localScale.z, 1.4f, 2f));
+        t.transform.localScale = temp;
+
+        t.alpha -= Time.deltaTime * 2;
+        t.alpha = Mathf.Clamp(t.alpha, 0.2f, 0.7f);
+
         // gets the shootable enemy and makes em red
-        if(GameObject.Find("Enemy(Clone)") != null)
+        if (GameObject.Find("Enemy(Clone)") != null)
         {
             GameObject.Find("Enemy(Clone)").GetComponent<SpriteRenderer>().color = Color.red;
         }
@@ -107,5 +117,7 @@ public class Shoot : MonoBehaviour
     public void MakeLaserStronk()
     {
         laserLength += 0.05f;
+        t.transform.localScale += Vector3.one * 0.2f;
+        t.alpha = 1f;
     }
 }
