@@ -15,6 +15,7 @@ public class SpawnEnemy : MonoBehaviour
 
     void Start()
     {
+        // creating the listener for making the laser stronger on kill
         if (laserBuff == null)
         {
             laserBuff = new UnityEvent();
@@ -24,8 +25,10 @@ public class SpawnEnemy : MonoBehaviour
 
     void Update()
     {
+        // creating the new wave of enemies once all enemies on screen are eliminated
         if(enemiesLeft == 0)
         {
+            // set active so I don't need to do it for every enemy later
             enemy.SetActive(true);
             for(int i = 0; i < enemyAmount; i++)
             {
@@ -52,6 +55,7 @@ public class SpawnEnemy : MonoBehaviour
                         Instantiate(enemy, new Vector3(-7.5f, Random.Range(-6f, 6f), 0), Quaternion.identity);
                     }
                 }
+                // making it so that the next wave will have one more enemy (and so that enemies won't go to 0 or below, breaking the game)
                 enemiesLeft += 1;
             }
             laserBuff.Invoke();

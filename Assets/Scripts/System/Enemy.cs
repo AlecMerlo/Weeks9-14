@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        // listener
         if (laserBuff == null)
         {
             laserBuff = new UnityEvent();
@@ -45,6 +46,7 @@ public class Enemy : MonoBehaviour
 
     public void kill()
     {
+        // destroying killed enemies and changing the value of enemies left
         if(GameObject.Find("Enemy(Clone)") == this.gameObject && killed == false)
         {
             killed = true;
